@@ -1,3 +1,27 @@
+# PRESENTATION
+
+Le thème de travail est la création d'une plateforme dynamique pour centraliser et gérer des jeux :
+
+- Mise en place d'une architecture web dynamique :
+  Utilisation de technologies comme Express et EJS pour développer une application web capable de générer des vues dynamiques.
+
+- Gestion et intégration des jeux :
+  Ajout et organisation de jeux comme "Dice Roller" et "Jeu de la Fourchette".
+  Dynamisation des routes pour gérer plusieurs jeux à partir de données externes (fichier games.js).
+
+- Expérience utilisateur améliorée :
+  Mise en place d'une navigation claire et dynamique.
+  Support pour des fichiers CSS spécifiques à chaque jeu.
+
+- Évolutivité :
+  Ajout simplifié de nouveaux jeux (comme "Invader").
+  Gestion centralisée des données pour les jeux et factorisation du code (notamment via des templates partagés comme le header).
+- Initiation à la gestion de données dynamiques et paramétrées :
+
+- Utilisation de routes paramétrées pour gérer les jeux sans répéter le code.
+
+# CONSIGNES
+
 # GameHub
 
 Bon, on a quelques jeux qui traînent, c'est cool ! Mais c'est le bazar !
@@ -10,13 +34,15 @@ Pour ça, on va se créer un petit site internet _dynamique_.
 
 Commençons par initialiser le projet pour pouvoir y installer des dépendances.
 
-Ensuite, installons les dépendances dont on a va avoir besoin : 
+Ensuite, installons les dépendances dont on a va avoir besoin :
+
 - `express` pour générer un serveur web rapidement.
 - `ejs` pour gérer des views dynamiquement.
 
 Créons ensuite `index.js`, le point d'entrée pour notre application. Dans ce fichier, on doit "appeler" les dépendances nécessaires, instancier une application express et lancer l'application.
 
 N'oublions pas les réglages habituels de Express, à savoir:
+
 - Le moteur de rendu.
 - Le dossier des views.
 - Les fichiers du dossier `public` sont des fichiers _statiques_.
@@ -29,7 +55,8 @@ Une intégration est déjà fournie, mais elle n'est pas terminée. Il faut comp
 
 ## Étape 3 : premières routes
 
-Il est temps de commencer à intégrer nos jeux. On met en place 2 routes : 
+Il est temps de commencer à intégrer nos jeux. On met en place 2 routes :
+
 - `/game/fourchette` doit renvoyer la view `fourchette` déjà fournie.
 - `/game/diceRoller` doit renvoyer la view `diceRoller` déjà fournie.
 
@@ -43,11 +70,13 @@ Attention pendant la factorisation, certains jeux (Dice Roller) nécessitent qu'
 On va créer une view `header` qu'on va inclure au début de toutes nos views. Ce `header` contiendra tout le début de notre HTML, dont la balise `<head>`.
 
 Or, c'est dans cette balise `<head>` qu'on doit include les css ! Pour pouvoir inclure le css spéficique au jeu "Dice Roller", il faut passer une variable à la view (cf [la doc](https://expressjs.com/fr/api.html#res.render)). Ensuite dans la view `header`, il faut tester la valeur (voir l'existence) de cette variable et inclure le fichier en conséquence.
+
 </details>
 
 ## Étape 4 : première couche de dynamisation
 
 Dans le code, on nous a fourni un fichier `games.js`. Ce fichier contient le détail de chacun de nos jeux.
+
 - Commençons par importer le contenu de ce fichier dans une variable, dans le fichier `index.js`.
 <details>
 <summary>Hein?</summary>
@@ -74,6 +103,7 @@ Bon allez, ras le bol des routes en dur, on veut du vrai dynamique!
 On va désactiver (commenter le code) les routes `/game/fourchette` et `/game/diceRoller`. On va les remplacer par une route paramétrée !
 
 Cette route correspond au pattern `/game/:nomDuJeu`. Lorsqu'on accède à cette route, il faut :
+
 - Retrouver le jeu dont le nom correspond à celui dans l'url
 - Si on trouve le jeu, render la view correspondante.
 - Sinon, renvoyer une page "404".
@@ -84,11 +114,12 @@ Cette route correspond au pattern `/game/:nomDuJeu`. Lorsqu'on accède à cette 
 Tout ce dont on a besoin est [dans la doc](https://expressjs.com/fr/) !
 
 Comment ça, c'est nul comme indice ? :smiling_imp:
+
 </details>
 
 ## Bonus :skull:
 
-Rajoutons le jeu "Invader" codé en S4 ! 
+Rajoutons le jeu "Invader" codé en S4 !
 
 <details>
 <summary>Les étapes</summary>
